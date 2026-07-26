@@ -1,0 +1,13 @@
+# dependencies and build output
+node_modules/
+.next/
+out/
+.venv/
+
+# local environment files
+.env*
+!.env.example
+
+# diagnostics
+*.log
+.DS_Store

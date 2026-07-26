@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white text-slate-900 antialiased; font-family: 'Noto Sans Thai', 'DM Sans', sans-serif; }
+  * { @apply border-slate-200; }
+}
+
+/* The landing page starts in dark mode; the header toggle updates this class. */
+html.dark body { background: #0b1220; color: #e7eefc; }
+html.dark .bg-white { background-color: #101b2e !important; }
+html.dark .bg-\[\#F7FAFD\], html.dark .bg-\[\#F3F7FC\], html.dark .bg-\[\#EAF1FF\] { background-color: #111d32 !important; }
+html.dark .text-ink { color: #edf3ff !important; }
+html.dark .text-slate-600, html.dark .text-slate-500 { color: #b6c3d9 !important; }
+html.dark .border-slate-200 { border-color: #273852 !important; }
+html.dark .bg-\[\#EAF7F3\], html.dark .bg-\[\#EFF4FF\] { background-color: #16273a !important; }
+
+.pop-on-scroll { opacity: 0; transform: translateY(22px) scale(.97); transition: opacity 650ms ease, transform 650ms cubic-bezier(.22, 1, .36, 1); transition-delay: var(--pop-delay, 0ms); }
+.pop-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+@media (prefers-reduced-motion: reduce) { .pop-on-scroll { opacity: 1; transform: none; transition: none; } }

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plearn Path Builder"
+  short_description: "Build and evolve Plearn Path"
+  default_prompt: "Use $plearn-path to extend the Plearn Path demo."
