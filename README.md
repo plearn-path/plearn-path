@@ -32,7 +32,11 @@ skills/plearn-path/        Reusable Codex skill for this project
 
 ## Demo boundaries
 
-The landing page and API routes use mock data. Replace the mock API/service boundaries with the Fast Scoring Engine, Redis, Neo4j, PostgreSQL, RabbitMQ, and Gemini API for production. Keep LLM work asynchronous and never return answer keys in learner-facing responses.
+**Built for the demo:** landing page, Student App (`/learn`), Teacher Dashboard (`/teacher`), Next.js scoring API routes, adaptive-learning mock data, PWA service worker, and IndexedDB cache for the next exercise.
+
+**Prepared but mocked:** Gemini Adaptive Hint uses a typing-state simulation; PostgreSQL schema is in `database/schema.sql` but is not connected; AIS cards are concept previews only.
+
+**Vision when scaling:** extract scoring to Go, add Redis, RabbitMQ, Neo4j, NGINX, and production Gemini/AIS integrations. Keep LLM work asynchronous at that scale and never return answer keys in learner-facing responses.
 
 ## Checks
 
