@@ -1,22 +1,22 @@
 export const prerequisites = {
-  integer_basics: [],
-  integer_addition: ["integer_basics"],
-  integer_subtraction: ["integer_addition"],
-  integer_multiplication: ["integer_subtraction"]
+  functions_basics: [],
+  linear_functions: ["functions_basics"],
+  quadratic_functions: ["linear_functions"],
+  calculus_basics: ["quadratic_functions"]
 };
 
 export const nextConcept = {
-  integer_basics: "integer_addition",
-  integer_addition: "integer_subtraction",
-  integer_subtraction: "integer_multiplication"
+  functions_basics: "linear_functions",
+  linear_functions: "quadratic_functions",
+  quadratic_functions: "calculus_basics"
 };
 
 export const questions = [
-  { id: "q-basics-1", conceptId: "integer_basics", difficulty: 0.2, prompt: "จำนวนใดอยู่ทางซ้ายของ 0 หนึ่งช่อง?", answer: "-1", hint: "ดูที่เส้นจำนวน: ค่าทางซ้ายของศูนย์เป็นจำนวนลบ" },
-  { id: "q-basics-2", conceptId: "integer_basics", difficulty: 0.35, prompt: "จำนวนใดมากกว่า: -2 หรือ -5?", answer: "-2", hint: "บนเส้นจำนวน ค่าที่อยู่ทางขวาจะมีค่ามากกว่า" },
-  { id: "q-add-1", conceptId: "integer_addition", difficulty: 0.35, prompt: "-8 + 3 = ?", answer: "-5", hint: "เริ่มที่ -8 แล้วขยับไปทางขวา 3 ช่อง" },
-  { id: "q-add-2", conceptId: "integer_addition", difficulty: 0.55, prompt: "-12 + 7 = ?", answer: "-5", hint: "การบวกจำนวนบวกคือการขยับไปทางขวาบนเส้นจำนวน" },
-  { id: "q-sub-1", conceptId: "integer_subtraction", difficulty: 0.55, prompt: "5 - 9 = ?", answer: "-4", hint: "เปลี่ยนการลบ 9 เป็นการบวก -9 แล้วค่อยคิด" },
-  { id: "q-sub-2", conceptId: "integer_subtraction", difficulty: 0.72, prompt: "-6 - 8 = ?", answer: "-14", hint: "เมื่อเอาจำนวนลบไปลบอีกจำนวนหนึ่ง ให้ขยับไปทางซ้าย" },
-  { id: "q-multiply-1", conceptId: "integer_multiplication", difficulty: 0.7, prompt: "-4 × 3 = ?", answer: "-12", hint: "จำนวนลบคูณจำนวนบวกจะได้จำนวนลบ" }
+  { id: "q-function-1", conceptId: "functions_basics", difficulty: 0.25, prompt: "กำหนด f(x) = 2x + 3 แล้ว f(4) มีค่าเท่าไร?", answer: "11", hint: "แทน x = 4 ลงในนิพจน์ 2x + 3 แล้วคำนวณทีละขั้น" },
+  { id: "q-function-2", conceptId: "functions_basics", difficulty: 0.4, prompt: "กำหนด g(x) = x² - 1 แล้ว g(-3) มีค่าเท่าไร?", answer: "8", hint: "ระวัง: (-3)² มีค่าเป็นบวก 9" },
+  { id: "q-linear-1", conceptId: "linear_functions", difficulty: 0.45, prompt: "เส้นตรงผ่านจุด (1, 2) และ (3, 6) มีความชันเท่าไร?", answer: "2", hint: "ใช้สูตรความชัน: (y₂ - y₁) ÷ (x₂ - x₁)" },
+  { id: "q-linear-2", conceptId: "linear_functions", difficulty: 0.6, prompt: "กราฟ y = 3x - 5 ตัดแกน x ที่ค่า x เท่าไร?", answer: "5/3", hint: "จุดตัดแกน x มี y = 0 ลองแทน 0 ลงในสมการ" },
+  { id: "q-quadratic-1", conceptId: "quadratic_functions", difficulty: 0.65, prompt: "สมการ x² - 5x + 6 = 0 มีคำตอบรากที่น้อยกว่าเท่าไร?", answer: "2", hint: "แยกตัวประกอบเป็น (x - ?)(x - ?) = 0 โดยหาสองจำนวนที่คูณกันได้ 6 และบวกกันได้ -5" },
+  { id: "q-quadratic-2", conceptId: "quadratic_functions", difficulty: 0.78, prompt: "จุดยอดของกราฟ y = (x - 2)² + 1 คือพิกัดใด?", answer: "(2,1)", hint: "รูป y = (x - h)² + k มีจุดยอดที่ (h, k)" },
+  { id: "q-calculus-1", conceptId: "calculus_basics", difficulty: 0.85, prompt: "อนุพันธ์ของ f(x) = 3x² คืออะไร?", answer: "6x", hint: "ใช้กฎกำลัง: อนุพันธ์ของ axⁿ คือ a×n×xⁿ⁻¹" }
 ];

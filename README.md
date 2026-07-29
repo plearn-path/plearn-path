@@ -1,15 +1,117 @@
 # Plearn Path
 
-Plearn Path is an adaptive-learning AI tutor for Thai education, created as a presentation-ready demo for JUMP THAILAND HACKATHON 2026.
+Plearn Path is an adaptive-learning web application for Thai upper-secondary mathematics. It begins with Grade 10 (M.4) learners studying functions and helps each learner move through practice at an appropriate pace. Instead of presenting the same sequence to every student, the application observes recent answers, adjusts the next exercise, provides a scaffolded hint when needed, and gives teachers a concise view of classroom learning gaps.
 
-## Stack
+The project is designed as an end-to-end product demonstration for JUMP THAILAND HACKATHON 2026.
 
-- Next.js App Router + React + TypeScript
-- Tailwind CSS
-- Recharts
-- Mock API routes and JavaScript adaptive-learning logic
+## The problem
 
-## Run locally
+In a large classroom, learners often enter a lesson with different levels of prior knowledge. A teacher must keep the class moving while also identifying students who are struggling with a prerequisite concept. Learners who need additional support can fall behind, while learners who have already mastered a topic may spend time repeating material that is no longer useful.
+
+Plearn Path addresses this gap by connecting learner practice with teacher-facing insight. The learner receives a path through mathematical concepts; the teacher receives a compact signal about where intervention is most valuable.
+
+## Product experience
+
+### Learner experience
+
+The learner opens `/learn` and receives a mathematics question from the current concept. The current learning path contains:
+
+```text
+Function basics
+  → Linear functions
+    → Quadratic functions
+      → Introductory calculus
+```
+
+For each question, the learner can:
+
+1. Submit an answer.
+2. Receive immediate correctness feedback.
+3. Request an Adaptive Hint that explains the next reasoning step without revealing the final answer.
+4. Receive the next question selected for the learner's current concept and estimated ability.
+
+The learner-facing API never returns the answer key with a question. This keeps answer validation on the server-side service layer and allows the UI to remain focused on practice.
+
+### Adaptive learning flow
+
+The adaptive loop is driven by a small prerequisite graph and a session state:
+
+1. A session starts at `functions_basics` with a normalized skill rating of `0.5`.
+2. Each answer is recorded with its concept, correctness, and duration.
+3. Correct answers increase the rating; incorrect answers decrease it.
+4. Two correct answers in sequence advance the learner to the next concept.
+5. Repeated incorrect answers move the learner back to a prerequisite concept when one exists.
+6. The question selector chooses an exercise whose difficulty is closest to the current rating.
+
+This creates a transparent, deterministic adaptive loop that is easy to demonstrate, inspect, and extend.
+
+### Teacher experience
+
+The `/teacher` route represents a Grade 10 class. It displays a mastery heatmap for three learners across two concepts and highlights a recommended intervention for the next lesson.
+
+The dashboard turns raw percentages into an action: for example, it identifies learners who need additional support with quadratic equations and suggests a short factorisation activity. The action button provides a visible confirmation state, making the recommendation flow demonstrable in the interface.
+
+## Architecture and data flow
+
+```text
+Browser
+  ├─ Landing page (/)
+  ├─ Learner practice (/learn)
+  └─ Teacher dashboard (/teacher)
+          │
+          ▼
+Next.js Route Handlers
+  ├─ GET  /api/students/:studentId/next-question
+  └─ POST /api/students/:studentId/answers
+          │
+          ▼
+Learning Service
+  ├─ In-memory learner session
+  ├─ Adaptive engine
+  └─ Learner-safe question response
+          │
+          ▼
+Question catalog and prerequisite graph
+```
+
+The learning service creates an in-memory session for each learner identifier. It receives answer submissions, calls the adaptive engine, updates the session state, and returns feedback plus the next learner-safe question. The question catalog stores the concept identifier, difficulty, prompt, answer key, and hint for each exercise.
+
+## Project structure
+
+```text
+app/
+  page.tsx                                  Landing page
+  learn/page.tsx                            Learner practice experience
+  teacher/page.tsx                          Teacher dashboard
+  api/students/[studentId]/next-question/   Next-question endpoint
+  api/students/[studentId]/answers/         Answer-submission endpoint
+
+components/
+  landing/                                  Landing-page sections and UI blocks
+  learning/                                 Question card and learning-path sidebar
+  teacher/                                  Heatmap and recommended-action card
+  ui/                                       Shared interaction components
+
+features/learning/
+  data/catalog.js                           Questions, hints, difficulty, and graph data
+  data/mock-learning-data.ts                Learning-path and teacher-dashboard data
+  engine/adaptive-engine.js                 Progression, backtracking, and selection rules
+  services/learning-service.js              Session and scoring orchestration
+```
+
+## Technology stack
+
+| Technology | Purpose | Why it is used |
+| --- | --- | --- |
+| Next.js 16 App Router | Application framework and API routes | Keeps the website, learner routes, and server-side demo endpoints in one deployable codebase. |
+| React 19 | Interactive user interface | Handles learner input, hint visibility, dashboard confirmation state, and reusable UI components. |
+| TypeScript | Frontend component development | Adds type checking for React component props and structured dashboard data. |
+| JavaScript | Adaptive engine and service layer | Keeps the learning-rule prototype direct and easy to inspect while preserving simple server-side modules. |
+| Tailwind CSS | Styling and responsive layout | Makes it fast to build a consistent dark interface, responsive grids, readable form controls, and accessible visual contrast. |
+| Recharts | Learning-progress visualisation | Provides the progress chart used in the landing-page teacher-dashboard preview. |
+| ESLint + Next.js build tooling | Code quality and validation | Detects common errors and verifies that routes compile successfully before delivery. |
+
+## Running locally
 
 ```powershell
 npm install
@@ -18,28 +120,30 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Project structure
+Useful routes:
 
-```text
-app/                      Pages, global styles, and mock API routes
-components/landing/        Reusable landing page sections
-components/ui/             Shared UI interactions, including scroll animation
-features/learning/data/    Typed demo data and question catalog
-features/learning/engine/  Adaptive-learning and DAG rules
-features/learning/services/ Session orchestration and API-ready use cases
-skills/plearn-path/        Reusable Codex skill for this project
-```
+- `/` — landing page
+- `/learn` — learner practice flow
+- `/teacher` — teacher dashboard
+- `/api/health` — health-check endpoint
 
-## Demo boundaries
-
-**Built for the demo:** landing page, Student App (`/learn`), Teacher Dashboard (`/teacher`), Next.js scoring API routes, adaptive-learning mock data, PWA service worker, and IndexedDB cache for the next exercise.
-
-**Prepared but mocked:** Gemini Adaptive Hint uses a typing-state simulation; PostgreSQL schema is in `database/schema.sql` but is not connected; AIS cards are concept previews only.
-
-**Vision when scaling:** extract scoring to Go, add Redis, RabbitMQ, Neo4j, NGINX, and production Gemini/AIS integrations. Keep LLM work asynchronous at that scale and never return answer keys in learner-facing responses.
-
-## Checks
+## Quality checks
 
 ```powershell
+npm run lint
 npm run build
 ```
+
+## Future development
+
+Plearn Path can evolve from its current adaptive-learning foundation in several directions:
+
+1. **Persistent learner data** — add authentication, a production database, and durable learner progress across devices and classes.
+2. **Teacher workflows** — allow teachers to create activities, assign practice sets, review answer history, and track improvement over time.
+3. **Broader curriculum coverage** — expand from M.4 functions into additional mathematics topics, other grades, and other subjects while retaining the prerequisite-graph model.
+4. **AI-assisted hints** — generate pedagogically constrained hints that follow a concept-specific rubric, validate their output, and keep answer disclosure under strict control.
+5. **Data-driven recommendations** — calculate recommended teacher interventions from real classroom attempts, concept thresholds, and learning trends.
+6. **Accessibility and inclusion** — add screen-reader support, adjustable typography, multilingual content, and learning modes for diverse learner needs.
+7. **School-scale operations** — introduce role-based access, privacy controls, audit trails, observability, and analytics appropriate for student data.
+
+The central principle remains the same: use learner evidence to make the next learning step clearer for both the learner and the teacher.

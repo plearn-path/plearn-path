@@ -2,15 +2,15 @@ export type LearningNode = { id: string; label: string; state: "mastered" | "cur
 export type HeatmapCell = { student: string; concept: string; mastery: number };
 
 export const learningPath: LearningNode[] = [
-  { id: "integer-basics", label: "จำนวนเต็ม", state: "mastered", prerequisites: [] },
-  { id: "addition", label: "การบวกและลบ", state: "current", prerequisites: ["integer-basics"] },
-  { id: "multiplication", label: "การคูณและหาร", state: "locked", prerequisites: ["addition"] }
+  { id: "functions-basics", label: "พื้นฐานฟังก์ชัน", state: "mastered", prerequisites: [] },
+  { id: "linear-functions", label: "ฟังก์ชันเชิงเส้น", state: "current", prerequisites: ["functions-basics"] },
+  { id: "quadratic-functions", label: "ฟังก์ชันกำลังสอง", state: "locked", prerequisites: ["linear-functions"] }
 ];
 
 export const teacherHeatmap: HeatmapCell[] = [
-  { student: "พีท", concept: "จำนวนเต็ม", mastery: 92 }, { student: "ฟ้า", concept: "จำนวนเต็ม", mastery: 76 },
-  { student: "บีม", concept: "จำนวนเต็ม", mastery: 49 }, { student: "พีท", concept: "การบวกและลบ", mastery: 82 },
-  { student: "ฟ้า", concept: "การบวกและลบ", mastery: 62 }, { student: "บีม", concept: "การบวกและลบ", mastery: 38 }
+  { student: "พีท", concept: "ฟังก์ชันเชิงเส้น", mastery: 92 }, { student: "ฟ้า", concept: "ฟังก์ชันเชิงเส้น", mastery: 76 },
+  { student: "บีม", concept: "ฟังก์ชันเชิงเส้น", mastery: 49 }, { student: "พีท", concept: "สมการกำลังสอง", mastery: 82 },
+  { student: "ฟ้า", concept: "สมการกำลังสอง", mastery: 62 }, { student: "บีม", concept: "สมการกำลังสอง", mastery: 38 }
 ];
 
 // TODO: Replace these static values with Teacher Dashboard API data.

@@ -1,10 +1,17 @@
-"use client";
-
 import Link from "next/link";
+import { TeacherHeatmap } from "../../components/teacher/teacher-heatmap";
+import { RecommendedActionCard } from "../../components/teacher/recommended-action-card";
 import { teacherHeatmap } from "../../features/learning/data/mock-learning-data";
 
 export default function TeacherPage() {
-  const concepts = [...new Set(teacherHeatmap.map((cell) => cell.concept))];
-  const students = [...new Set(teacherHeatmap.map((cell) => cell.student))];
-  return <main className="min-h-screen bg-[#080F1E] px-5 py-8 text-slate-100"><div className="mx-auto max-w-6xl"><header className="flex items-center justify-between"><Link href="/" className="text-sm font-bold text-slate-300">← Plearn Path</Link><span className="rounded-full bg-brand px-3 py-1.5 text-xs font-bold text-white">ห้อง ม.1/1 · Live demo</span></header><div className="mt-12"><p className="text-sm font-bold text-sun">TEACHER DASHBOARD</p><h1 className="mt-2 text-4xl font-bold">ภาพรวมที่พาไปสู่การสอนได้ทันที</h1><p className="mt-3 text-slate-400">ไม่ใช่แค่เห็นจุดอ่อน แต่เห็นสิ่งที่ควรทำต่อในคาบถัดไป</p></div><div className="mt-8 grid gap-5 lg:grid-cols-[1.35fr_.65fr]"><section className="rounded-3xl border border-slate-700 bg-[#121D31] p-7 shadow-2xl shadow-black/20"><h2 className="font-bold">Heatmap ความเข้าใจ</h2><div className="mt-6 grid grid-cols-[110px_repeat(2,1fr)] gap-3 text-center text-xs"> <span></span>{concepts.map((concept) => <b key={concept} className="text-slate-300">{concept}</b>)}{students.map((student) => <><b key={`${student}-name`} className="self-center text-left text-slate-200">น้อง{student}</b>{concepts.map((concept) => { const cell = teacherHeatmap.find((item) => item.student === student && item.concept === concept)!; return <div key={`${student}-${concept}`} className="rounded-lg py-5 font-bold" style={{ background: `hsl(${cell.mastery * 1.35} 65% 87%)`, color: cell.mastery < 55 ? "#9a3412" : "#14532d" }}>{cell.mastery}%</div>; })}</>)}</div><p className="mt-6 text-xs text-slate-500">เข้มขึ้น = เข้าใจดี · อ่อนลง = ควรได้รับความช่วยเหลือ</p></section><aside className="rounded-3xl border border-amber-400/20 bg-gradient-to-br from-[#23385F] to-[#17243B] p-7 text-white shadow-2xl shadow-black/20"><p className="text-xs font-bold text-sun">RECOMMENDED ACTION</p><h2 className="mt-3 text-2xl font-bold">วันนี้ควรสอนซ่อม<br />เรื่องการบวกและลบจำนวนเต็ม</h2><p className="mt-4 text-sm leading-6 text-slate-300">สำหรับน้องบีมและน้องฟ้า ใช้เส้นจำนวนเป็นกิจกรรม 10 นาที ก่อนเริ่มบทใหม่</p><button className="mt-7 rounded-xl bg-sun px-4 py-3 text-sm font-bold text-ink">สร้างกิจกรรมทบทวน</button></aside></div></div></main>;
+  return <main className="min-h-screen bg-[#080F1E] px-5 py-8 text-slate-100">
+    <div className="mx-auto max-w-6xl">
+      <header className="flex items-center justify-between"><Link href="/" className="text-sm font-bold text-slate-300">← Plearn Path</Link><span className="rounded-full bg-brand px-3 py-1.5 text-xs font-bold text-white">ห้อง ม.4/1 · Live demo</span></header>
+      <div className="mt-12"><p className="text-sm font-bold text-sun">TEACHER DASHBOARD</p><h1 className="mt-2 text-4xl font-bold">ภาพรวมที่พาไปสู่การสอนได้ทันที</h1><p className="mt-3 text-slate-400">ไม่ใช่แค่เห็นจุดอ่อน แต่เห็นสิ่งที่ควรทำต่อในคาบถัดไป</p></div>
+      <div className="mt-8 grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
+        <TeacherHeatmap cells={teacherHeatmap} />
+        <RecommendedActionCard />
+      </div>
+    </div>
+  </main>;
 }

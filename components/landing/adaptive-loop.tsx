@@ -1,2 +1,14 @@
-const steps = [["01", "Cold Start", "เลือกชั้นเรียนและทำ pre-test สั้นเพื่อ calibration"], ["02", "Graph-based Path", "วางเส้นทางจาก prerequisite DAG"], ["03", "Micro-adjustment", "ยากขึ้นหรือทบทวนตามคำตอบ"], ["04", "Adaptive Hint", "ช่วยคิดทีละขั้นโดยไม่เฉลย"]];
-export function AdaptiveLoop() { return <section id="how" className="bg-[#F7FAFD] py-20"><div className="mx-auto max-w-7xl px-5 lg:px-8"><p className="text-sm font-bold text-brand">HOW IT WORKS</p><h2 className="mt-3 text-3xl font-bold text-ink">Adaptive Loop ที่เรียนรู้ไปพร้อมผู้เรียน</h2><div className="mt-10 grid gap-4 md:grid-cols-4">{steps.map(([number, title, description]) => <article key={number} className="relative rounded-2xl bg-white p-6 shadow-sm"><span className="text-sm font-bold text-sun">{number}</span><h3 className="mt-8 font-bold text-ink">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{description}</p></article>)}</div></div></section>; }
+const steps = [
+  ["01", "Cold Start", "เลือกชั้นเรียนและทำ pre-test สั้นเพื่อ calibration"],
+  ["02", "Graph-based Path", "วางเส้นทางจาก prerequisite DAG"],
+  ["03", "Micro-adjustment", "ยากขึ้นหรือทบทวนตามคำตอบ"],
+  ["04", "Adaptive Hint", "ช่วยคิดทีละขั้นโดยไม่เฉลย"]
+];
+
+function AdaptiveLoopStep({ number, title, description }: { number: string; title: string; description: string }) {
+  return <article className="relative rounded-2xl bg-white p-6 shadow-sm"><span className="text-sm font-bold text-sun">{number}</span><h3 className="mt-8 font-bold text-ink">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{description}</p></article>;
+}
+
+export function AdaptiveLoop() {
+  return <section id="how" className="bg-[#F7FAFD] py-20"><div className="mx-auto max-w-7xl px-5 lg:px-8"><p className="text-sm font-bold text-brand">HOW IT WORKS</p><h2 className="mt-3 text-3xl font-bold text-ink">Adaptive Loop ที่เรียนรู้ไปพร้อมผู้เรียน</h2><div className="mt-10 grid gap-4 md:grid-cols-4">{steps.map(([number, title, description]) => <AdaptiveLoopStep key={number} number={number} title={title} description={description} />)}</div></div></section>;
+}
