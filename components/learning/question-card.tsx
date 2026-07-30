@@ -24,6 +24,6 @@ export function QuestionCard({ question, answer, feedback, hint, loadingHint, on
       <button onClick={onShowHint} className="rounded-xl bg-emerald-50 px-5 py-3 text-sm font-bold text-emerald-700">Adaptive Hint ✦</button>
     </div>
     {(loadingHint || hint) && <div className="mt-6 rounded-xl bg-emerald-50 p-4 text-sm leading-6 text-emerald-950"><b>Adaptive Hint</b><p className="mt-1">{loadingHint ? "AI กำลังคิดคำใบ้ให้คุณ..." : hint}</p></div>}
-    {feedback && <p className="mt-5 text-sm font-semibold text-brand">{feedback}</p>}
+    {feedback && <p className="mt-5 text-sm font-semibold text-white">{feedback}</p>}
   </section>;
 }
