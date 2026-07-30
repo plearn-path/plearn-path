@@ -1,3 +1,12 @@
 export function FooterCta() {
-  return <footer id="cta" className="bg-[#EAF1FF] px-5 py-20 text-center"><div className="mx-auto max-w-2xl"><p className="text-sm font-bold text-brand">READY TO LEARN DIFFERENTLY?</p><h2 className="mt-3 text-4xl font-bold tracking-tight text-ink">ทุกคนควรมีเส้นทาง<br />การเรียนรู้ของตัวเอง</h2><p className="mt-5 text-slate-600">มาร่วมสร้างอนาคตการศึกษาไทย ที่ไม่มีผู้เรียนคนไหนถูกทิ้งไว้ข้างหลัง</p><div className="mt-8 flex justify-center gap-3"><a href="#top" className="rounded-xl bg-brand px-5 py-3 text-sm font-bold text-white">ลองใช้ Plearn Path</a><button className="rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-ink">ดู Pitch Deck</button></div></div></footer>;
+  return (
+    <footer id="cta" className="bg-white px-5 py-16">
+      <div className="mx-auto max-w-6xl rounded-[40px] bg-plum-deep px-6 py-16 text-center text-white shadow-xl shadow-purple-950/15 sm:px-12">
+        <p className="text-sm font-bold tracking-wide text-[#D9C7FF]">READY TO LEARN DIFFERENTLY?</p>
+        <h2 className="mt-3 text-4xl font-bold tracking-tight">ทุกคนควรมีเส้นทาง<br />การเรียนรู้ของตัวเอง</h2>
+        <p className="mx-auto mt-5 max-w-xl text-white/75">เริ่มจากโจทย์คณิตศาสตร์ ม.4 แล้วให้ Plearn Path ช่วยชี้ขั้นต่อไปที่เหมาะกับผู้เรียนและคุณครู</p>
+        <div className="mt-8"><a href="/learn" className="inline-block rounded-[24px] bg-brand px-7 py-3.5 text-sm font-bold text-white">ลองใช้ Plearn Path</a></div>
+      </div>
+    </footer>
+  );
 }
