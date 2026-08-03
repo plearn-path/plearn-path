@@ -35,13 +35,12 @@ Student answers a question
 - Use TypeScript for React components and JavaScript for the current learning engine and mock API services.
 - Keep the product focused on M.4 mathematics; do not introduce additional grades, subjects, authentication, or persistence unless explicitly requested.
 - Prefer small presentational components imported into route pages instead of large JSX returns.
-- Keep UI dark by default and preserve readable contrast, keyboard input, and responsive layouts.
+- Follow the white, purple, and lavender visual system in DESIGN.md; preserve readable contrast, keyboard input, and responsive layouts.
 - Treat the Teacher Dashboard data as mock data unless a real data source is explicitly added.
 
 ## Explicitly out of scope
 
 - Authentication, user accounts, role-based access, and a production database.
-- PWA/offline functionality, service workers, and IndexedDB.
 - Gemini/LLM calls, generated hints, and real-time analytics.
 - AIS integrations, SMS, points, payments, or parent notifications.
 - Production infrastructure such as FastAPI/Go services, NGINX, Redis, RabbitMQ, PostgreSQL, or Neo4j.
