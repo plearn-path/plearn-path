@@ -1,6 +1,6 @@
 # Plearn Path
 
-Plearn Path is an adaptive-learning web application for Thai upper-secondary mathematics. It begins with Grade 10 (M.4) learners studying functions and helps each learner move through practice at an appropriate pace. Instead of presenting the same sequence to every student, the application observes recent answers, adjusts the next exercise, provides a scaffolded hint when needed, and gives teachers a concise view of classroom learning gaps.
+Plearn Path is a teacher-first web application for Thai upper-secondary classrooms. Learners complete adaptive mathematics practice, and their answers become classroom insight that helps teachers identify learning gaps and plan the next lesson. The current demonstration uses Grade 10 (M.4) functions as its sample content.
 
 The project is designed as an end-to-end product demonstration for JUMP THAILAND HACKATHON 2026.
 
@@ -8,9 +8,13 @@ The project is designed as an end-to-end product demonstration for JUMP THAILAND
 
 In a large classroom, learners often enter a lesson with different levels of prior knowledge. A teacher must keep the class moving while also identifying students who are struggling with a prerequisite concept. Learners who need additional support can fall behind, while learners who have already mastered a topic may spend time repeating material that is no longer useful.
 
-Plearn Path addresses this gap by connecting learner practice with teacher-facing insight. The learner receives a path through mathematical concepts; the teacher receives a compact signal about where intervention is most valuable.
+Plearn Path addresses this gap by connecting learner practice with teacher-facing insight. Learner practice is the source of evidence; the teacher-facing dashboard is the primary decision-making surface.
 
 ## Product experience
+
+### Teacher experience
+
+The `/teacher` route represents a Grade 10 class and displays a mastery heatmap plus one recommended intervention for the next lesson. Its data is intentionally fixed demo data in the current MVP; it is not yet linked to live learner submissions.
 
 ### Learner experience
 
@@ -44,12 +48,6 @@ The adaptive loop is driven by a small prerequisite graph and a session state:
 6. The question selector chooses an exercise whose difficulty is closest to the current rating.
 
 This creates a transparent, deterministic adaptive loop that is easy to demonstrate, inspect, and extend.
-
-### Teacher experience
-
-The `/teacher` route represents a Grade 10 class. It displays a mastery heatmap for three learners across two concepts and highlights a recommended intervention for the next lesson.
-
-The dashboard turns raw percentages into an action: for example, it identifies learners who need additional support with quadratic equations and suggests a short factorisation activity. The action button provides a visible confirmation state, making the recommendation flow demonstrable in the interface.
 
 ## Architecture and data flow
 
@@ -107,7 +105,7 @@ features/learning/
 | React 19 | Interactive user interface | Handles learner input, hint visibility, dashboard confirmation state, and reusable UI components. |
 | TypeScript | Frontend component development | Adds type checking for React component props and structured dashboard data. |
 | JavaScript | Adaptive engine and service layer | Keeps the learning-rule prototype direct and easy to inspect while preserving simple server-side modules. |
-| Tailwind CSS | Styling and responsive layout | Makes it fast to build a consistent dark interface, responsive grids, readable form controls, and accessible visual contrast. |
+| Tailwind CSS | Styling and responsive layout | Makes it fast to build a consistent white, purple, and lavender interface with responsive grids and readable form controls. |
 | Recharts | Learning-progress visualisation | Provides the progress chart used in the landing-page teacher-dashboard preview. |
 | ESLint + Next.js build tooling | Code quality and validation | Detects common errors and verifies that routes compile successfully before delivery. |
 

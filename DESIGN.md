@@ -3,8 +3,8 @@ version: alpha
 name: "Plearn Path"
 website: "https://github.com/Lxwkxy/plearn-path"
 description: >-
-  Product-design direction for Plearn Path, an adaptive mathematics practice
-  experience for Thai upper-secondary learners and their teachers.
+  Product-design direction for Plearn Path, a teacher-first classroom-insight
+  experience for Thai upper-secondary classrooms.
 ---
 
 # Plearn Path Design System
@@ -12,9 +12,9 @@ description: >-
 ## 1. Design intent
 
 Plearn Path should feel encouraging, focused, and premium without becoming
-childish. It translates a learner's answer into a next step: a suitable problem,
-a small hint, or a review point for the teacher. The visual system therefore uses
-an open white canvas for clarity and deep purple moments for confidence and focus.
+childish. Learner answers are the evidence; classroom insight for the teacher is
+the primary outcome. The visual system therefore uses an open white canvas for
+clarity and deep purple moments for confidence and focus.
 
 This direction is inspired by the supplied reference's editorial hierarchy,
 rounded surfaces, and purple-led palette. It is adapted for Plearn Path only;
@@ -72,15 +72,15 @@ Use purple gradients only as subtle photo overlays or contained decorative depth
 ### Header
 
 - Fixed, white, lightly translucent header with a hairline bottom border.
-- Brand at left, concise desktop navigation in the center, one purple CTA at right.
+- Brand at left, concise desktop navigation in the center, one purple Teacher Dashboard CTA at right.
 - Header height is `80px`; it should feel spacious but not oversized.
 
 ### Landing hero
 
 - Full-bleed lifestyle image with the learner on the right.
 - A dark plum left-to-right overlay creates a stable reading field for white copy.
-- Copy is left aligned: a small label, a large two-line headline, short support
-  paragraph, and no more than two actions.
+- Copy is left aligned: a small teacher-focused label, a large two-line headline,
+  short support paragraph, and no more than two actions.
 - The hero represents real learning; no fake dashboards over the image.
 
 ### Content rhythm
