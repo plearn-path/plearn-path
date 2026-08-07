@@ -29,9 +29,9 @@ export function QuestionCard({ question, answer, feedback, hint, loadingHint, on
   const questionPrompt = question?.prompt ?? "กำลังเตรียมโจทย์...";
 
   return (
-    <section className="rounded-[32px] bg-white p-8 text-ink shadow-glow">
+    <section className="rounded-[24px] bg-white p-5 text-ink shadow-glow sm:rounded-[32px] sm:p-8">
       <p className="text-xs font-bold text-brand">ADAPTIVE PRACTICE · {conceptLabel}</p>
-      <h1 className="mt-4 text-3xl font-bold">{questionPrompt}</h1>
+      <h1 className="mt-4 text-2xl font-bold sm:text-3xl">{questionPrompt}</h1>
       <p className="mt-3 text-sm text-slate-500">
         คณิตศาสตร์ ม.4 · ตอบตามที่คุณคิด แล้วระบบจะปรับโจทย์ถัดไปให้เหมาะกับคุณ
       </p>
@@ -42,7 +42,7 @@ export function QuestionCard({ question, answer, feedback, hint, loadingHint, on
         className="mt-8 w-full rounded-[20px] border border-[#D8C7EF] px-4 py-3 text-lg text-slate-900 placeholder:text-slate-400 outline-brand"
         placeholder="พิมพ์คำตอบ"
       />
-      <div className="mt-4 flex flex-wrap gap-3">
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <button onClick={onSubmit} className="rounded-[24px] bg-brand px-5 py-3 text-sm font-bold text-white">
           ตรวจคำตอบ →
         </button>

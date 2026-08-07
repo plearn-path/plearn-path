@@ -1,6 +1,6 @@
 export function LearningPathSidebar() {
   return (
-    <aside className="rounded-[28px] border bg-white p-6 shadow-sm">
+    <aside className="rounded-[24px] border bg-white p-5 shadow-sm sm:rounded-[28px] sm:p-6">
       <p className="text-xs font-bold text-brand">YOUR PATH</p>
       <ol className="mt-5 space-y-4 text-sm">
         <li className="text-plum">✓ พื้นฐานฟังก์ชัน</li>

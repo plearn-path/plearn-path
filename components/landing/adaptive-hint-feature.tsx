@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export function AdaptiveHintFeature() {
   return (
-    <article className="rounded-[32px] bg-lavender p-8">
+    <article className="rounded-[24px] bg-lavender p-6 sm:rounded-[32px] sm:p-8">
       <span className="text-3xl">✦</span>
       <p className="mt-8 text-xs font-bold text-brand">ADAPTIVE HINT</p>
-      <h2 className="mt-3 text-2xl font-bold text-ink">คำใบ้ที่พาไปต่อ<br />ไม่ใช่คำตอบสำเร็จรูป</h2>
+      <h2 className="mt-3 text-xl font-bold text-ink sm:text-2xl">คำใบ้ที่พาไปต่อ<br />ไม่ใช่คำตอบสำเร็จรูป</h2>
       <p className="mt-3 max-w-md text-sm leading-6 text-slate-600">
         คำใบ้จะชวนคิดทีละขั้นจากจุดที่ผู้เรียนกำลังติด เพื่อให้ยังเป็นเจ้าของการเรียนรู้ของตัวเอง
       </p>

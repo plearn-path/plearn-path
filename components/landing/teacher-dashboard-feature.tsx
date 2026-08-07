@@ -26,9 +26,9 @@ function MasteryChart() {
 
 export function TeacherDashboardFeature() {
   return (
-    <article id="teacher" className="rounded-[32px] bg-plum-deep p-8 text-white">
+    <article id="teacher" className="rounded-[24px] bg-plum-deep p-6 text-white sm:rounded-[32px] sm:p-8">
       <p className="text-sm font-bold text-[#D9C7FF]">TEACHER DASHBOARD</p>
-      <h2 className="mt-3 text-2xl font-bold">เห็นจุดอ่อน<br />แล้วรู้ว่าควรทำอะไรต่อ</h2>
+      <h2 className="mt-3 text-xl font-bold sm:text-2xl">เห็นจุดอ่อน<br />แล้วรู้ว่าควรทำอะไรต่อ</h2>
       <p className="mt-3 text-sm text-white/75">
         Heatmap จับคู่กับคำแนะนำเชิงปฏิบัติสำหรับคาบเรียนถัดไป
       </p>
