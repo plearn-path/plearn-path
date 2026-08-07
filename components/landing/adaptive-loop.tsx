@@ -13,7 +13,7 @@ type AdaptiveLoopStepProps = {
 
 function AdaptiveLoopStep({ number, title, description }: AdaptiveLoopStepProps) {
   return (
-    <article className="rounded-[28px] bg-white p-6 shadow-sm">
+    <article className="rounded-[24px] bg-white p-5 shadow-sm sm:rounded-[28px] sm:p-6">
       <span className="text-sm font-bold text-brand">{number}</span>
       <h3 className="mt-8 font-bold text-ink">{title}</h3>
       <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
@@ -23,13 +23,13 @@ function AdaptiveLoopStep({ number, title, description }: AdaptiveLoopStepProps)
 
 export function AdaptiveLoop() {
   return (
-    <section id="how" className="bg-lavender py-24">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+    <section id="how" className="bg-lavender py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8">
         <p className="text-sm font-bold tracking-wide text-brand">HOW IT WORKS</p>
-        <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
+        <h2 className="mt-3 text-2xl font-bold text-ink sm:text-4xl">
           จากคำตอบของผู้เรียน สู่แผนสอนที่ตรงจุด
         </h2>
-        <div className="mt-10 grid gap-4 md:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-4">
           {steps.map(([number, title, description]) => (
             <AdaptiveLoopStep key={number} number={number} title={title} description={description} />
           ))}

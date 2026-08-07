@@ -12,7 +12,7 @@ function MasteryCell({ mastery }: { mastery: number }) {
   const color = mastery < 55 ? "#7D2279" : "#300942";
 
   return (
-    <div className="rounded-2xl py-5 font-bold" style={{ background, color }}>
+    <div className="rounded-2xl py-4 font-bold sm:py-5" style={{ background, color }}>
       {mastery}%
     </div>
   );
@@ -36,15 +36,17 @@ function HeatmapRow({ student, concepts, cells }: HeatmapRowProps) {
 export function TeacherHeatmap({ cells }: { cells: HeatmapCell[] }) {
   const concepts = [...new Set(cells.map((cell) => cell.concept))];
   const students = [...new Set(cells.map((cell) => cell.student))];
-  const columns = `110px repeat(${concepts.length}, minmax(0, 1fr))`;
+  const columns = `100px repeat(${concepts.length}, minmax(96px, 1fr))`;
 
   return (
-    <section className="rounded-[28px] bg-white p-7 text-ink shadow-sm">
+    <section className="min-w-0 rounded-[24px] bg-white p-5 text-ink shadow-sm sm:rounded-[28px] sm:p-7">
       <h2 className="font-bold">Heatmap ความเข้าใจ</h2>
-      <div className="mt-6 grid gap-3 text-center text-xs" style={{ gridTemplateColumns: columns }}>
-        <span />
-        {concepts.map((concept) => <b key={concept} className="text-slate-500">{concept}</b>)}
-        {students.map((student) => <HeatmapRow key={student} student={student} concepts={concepts} cells={cells} />)}
+      <div className="mt-6 overflow-x-auto pb-2">
+        <div className="grid min-w-[520px] gap-3 text-center text-xs" style={{ gridTemplateColumns: columns }}>
+          <span />
+          {concepts.map((concept) => <b key={concept} className="text-slate-500">{concept}</b>)}
+          {students.map((student) => <HeatmapRow key={student} student={student} concepts={concepts} cells={cells} />)}
+        </div>
       </div>
       <p className="mt-6 text-xs text-slate-500">
         เข้มขึ้น = เข้าใจดี · อ่อนลง = ควรได้รับความช่วยเหลือ

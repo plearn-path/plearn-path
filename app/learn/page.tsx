@@ -49,9 +49,9 @@ export default function LearnPage() {
   }
 
   return (
-    <main className="min-h-screen bg-lavender px-5 py-8 text-ink">
+    <main className="min-h-screen bg-lavender px-4 py-6 text-ink sm:px-5 sm:py-8">
       <div className="mx-auto max-w-3xl">
-        <header className="flex items-center justify-between">
+        <header className="flex items-center justify-between gap-3">
           <Link href="/" className="text-sm font-bold text-plum-deep">
             ← Plearn Path
           </Link>
@@ -59,7 +59,7 @@ export default function LearnPage() {
             Learning demo
           </span>
         </header>
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_220px]">
+        <div className="mt-8 grid gap-5 sm:mt-14 lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-8">
           <QuestionCard
             question={question}
             answer={answer}
